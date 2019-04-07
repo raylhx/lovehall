@@ -1,0 +1,26 @@
+{
+  "name": "lovehall",
+  "version": "1.0.0",
+  "description": "lovehall for collage student",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raylhx/lovehall.git"
+  },
+  "keywords": [
+    "node",
+    "koa"
+  ],
+  "author": "ray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raylhx/lovehall/issues"
+  },
+  "homepage": "https://github.com/raylhx/lovehall#readme",
+  "dependencies": {
+    "koa": "^2.7.0"
+  }
+}
