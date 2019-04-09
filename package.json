@@ -22,5 +22,10 @@
   "homepage": "https://github.com/raylhx/lovehall#readme",
   "dependencies": {
     "koa": "^2.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
   }
 }
