@@ -1,0 +1,74 @@
+
+/list get
+?id=''
+id为空是获取全部人，获取本人需要传递查询人的id
+{
+    code:0 // 0, 成功 其他为失败
+    msg:'success',
+    data:{
+        type: 0, 0是不匿名 1是匿名
+        username:'',
+        avatar:'',
+        image: '',
+        text: '',
+        createTime:'',
+        obj:'',
+        readCount:'',
+        likeCount:[
+            'imageurl','url'
+        ]
+        comment: [
+            {
+                name:'',
+                text:'',
+                avatar:'',
+            }
+        ]
+    }
+}
+/upperWall
+post
+提交参数
+obj:''// default : 所有人
+text: ''
+type: int,0是不匿名 1是匿名
+image: '',
+username: '', 用户名
+id:'',用户id，暂定
+{
+    code:0,
+    msg:'',
+    data:{}
+}
+
+/like
+post
+avatar: '',
+username:'',
+id:'',
+{
+    code:0,
+    msg:'',
+    data:{}
+}
+
+/comment post
+avatar: '',
+username:'',
+text:'',
+id:'',
+{
+    code:0,
+    msg:'',
+    data:{}
+}
+
+/userCenter
+{
+    code:0,
+    msg:'',
+    data:{
+        name:'',
+        id:'',
+    }
+}

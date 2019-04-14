@@ -3,7 +3,8 @@ module.exports = {
     ctx.response.body='demo'
   },
   list: async(ctx,next) =>{
-    ctx.response.body='list'
+    const userid = ctx.query.id
+    ctx.response.body = userid
   },
   like: async(ctx,next) =>{
     ctx.response.body='like'
