@@ -16,10 +16,12 @@ class User {
   /**
    * 查询
    */
-  async selectUser(userid){
-		const udata = await user.findOne({userid: userid});
+  async selectUser(openid){
+		const udata = await user.findOne({openid: openid});
 		if (udata) {
 			return udata;
+    } else {
+      return await this.createUser({openid:openid,})
     }
     return false;
   }

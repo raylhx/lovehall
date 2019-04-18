@@ -7,7 +7,7 @@ const userSchema = new Schema({
   name: String,
   nick: String,
   avatar: String,
-  useid: Number,
+  openid: Number,
 },{
   collation: 'user',
 });

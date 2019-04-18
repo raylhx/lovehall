@@ -9,6 +9,7 @@ module.exports = (app) => {
   router.post('/comment',bulletin.comment)
   router.post('/upperWall',bulletin.demo)
   router.get('/userCenter',user.center)
+  router.post('/checkUser',user.check)
   // 加载路由中间件
   app.use(router.routes()).use(router.allowedMethods())
 }

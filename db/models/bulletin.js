@@ -6,6 +6,7 @@ const Schema = mongodb.mongoose.Schema;
 const bulletinSchema = new Schema({
   type: Number,
   username: String,
+  userid: Number,
   avatar: String,
   image: String,
   content: String,
@@ -20,11 +21,11 @@ const bulletinSchema = new Schema({
     }
   ]
 },{
-  collation: 'bulletin_demo',
+  collation: 'bulletin',
   timestamps: {createdAt: 'createTime',updatedAt:'updateTime'}
 });
 
-const bulletin_Content = mongodb.mongoose.model('bulletin_demo', bulletinSchema)
+const bulletin_Content = mongodb.mongoose.model('bulletin', bulletinSchema)
 module.exports = {
   bulletin_Content
 }
