@@ -62,10 +62,10 @@ module.exports = {
     const data = {
       avatar: params.avatar || '',
       usrename: params.username || '匿名',
-      openid: params.openid || '',
+      id: params.id || '',
     }
     let res = {}
-    if (params.openid) {
+    if (params.id) {
       const result = await Bulletin.updateLikeCount(params)
       if (result) {
         res = {
@@ -99,11 +99,11 @@ module.exports = {
     const data = {
       avatar: params.avatar || '',
       usrename: params.username || '匿名',
-      openid: params.openid || '',
+      openid: params.id || '',
       content: params.content || '',
     }
     let res = {}
-    if (params.openid) {
+    if (params.id) {
       const result = await Bulletin.updateComment(params)
       if (result) {
         res = {
@@ -134,10 +134,10 @@ module.exports = {
     ctx.set('Access-Control-Allow-Origin', ctx.request.header.origin);
     ctx.set('Access-Control-Allow-Credentials','true');
     const params = ctx.request.body
-    const openid = params.openid || 0
+    const id = params.id || 0
     let res = {}
-    if (params.openid) {
-      const result = await Bulletin.updateReadCount(openid)
+    if (params.id) {
+      const result = await Bulletin.updateReadCount(id)
       if (result) {
         res = {
           code: 0,

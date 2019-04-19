@@ -63,20 +63,32 @@ class Bulletin {
   /**
    * 更新点赞数量
    */
-  async updateLikeCount(data) {
-
+  async updateLikeCount(id, data) {
+    if (id){
+      return bulletin_Content.updateOne(
+        { _id: id },
+        { $addToSet: { likeCount: data}},
+      );
+    }
+    return false
   }
   /**
    * 更新评论
    */
-  async updateComment(data){
-
+  async updateComment(id,data){
+    if (id){
+      return bulletin_Content.updateOne(
+        { _id: id },
+        { $push: { comment: data}},
+      );
+    }
+    return false
   }
   /**
    * 更新阅读数量
    */
   async updateReadCount(data){
-
+    return bulletin_Content.updateOne({ _id: data.id }, { $inc: { readCount: 1 } });
   }
 }
 module.exports = {
