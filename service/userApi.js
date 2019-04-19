@@ -1,6 +1,6 @@
 const querystring = require('querystring');
 const config = require('./config');
-const request = require('request');
+const http = require('http');
 const { User } =require('../db/controllers/userCtrl');
 module.exports = {
   center: async(ctx,next) =>{
@@ -20,7 +20,7 @@ module.exports = {
           grant_type: 'authorization_code'
       }
     };
-    request(options, (error, res, body) => {
+    http.request(options, (error, res, body) => {
       if (error) {
         res.toJSON({
           'status':'error',
@@ -31,7 +31,7 @@ module.exports = {
         let _data = JSON.parse(body);
         let res = {}
         if (_data){
-          const user = await User.selectUser(_data.openid)
+          const user = User.selectUser(_data.openid);
           if (user) {
             res = {
               code: 0,

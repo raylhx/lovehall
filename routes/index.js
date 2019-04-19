@@ -3,11 +3,11 @@ const user = require('../service/userApi.js')
 const bulletin = require('../service/bulletinApi.js')
 
 module.exports = (app) => {
-  router.get('/demo',bulletin.demo)
   router.get('/list',bulletin.list)
   router.post('/like',bulletin.like)
   router.post('/comment',bulletin.comment)
-  router.post('/upperWall',bulletin.demo)
+  router.post('/read',bulletin.read)
+  router.post('/upperWall',bulletin.upperWall)
   router.get('/userCenter',user.center)
   router.post('/checkUser',user.check)
   // 加载路由中间件

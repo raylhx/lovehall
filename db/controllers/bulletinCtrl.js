@@ -19,38 +19,64 @@ class Bulletin {
    * @param {number} page 页数 
    * @return {array} 返回一个数组列表
    */
-  async select(page){
-		const limit = 10;
+  async select(openid = '',page = 0){
+		const limit = 100;
     const skip = page * limit;
-		const pr = {
-			'createTime': {
-				$dateToString: {format: "%Y-%m-%d %H:%M", date: {$add:['$createTime',28800000] } }
-			},
-			'sign': '$sign',
-			'authorid': '$authorid',
-			'title': '$title',
-      'classify': '$classify',
-      'authorid': '$authorid',
-      'author': '$author',
-    }
-    return blog_articles.aggregate([
-      {
-        $lookup:
-        {
-          from: "users",
-          localField: "authorid",
-          foreignField: "uid",
-          as: "author"
-        }
+    const pr = {
+      'createTime': {
+        $dateToString: {format: "%Y-%m-%d %H:%M", date: {$add:['$createTime',28800000] } }
       },
-      {
-        $project: pr,
-      }
-    ])
-    .sort({'_id':-1})
-    .skip(skip)
-    .limit(limit)
-    .exec();
+      'type': '$type',
+      'username': '$username',
+      'openid': '$openid',
+      'avatar': '$avatar',
+      'image': '$image',
+      'content': '$content',
+      'obj': '$obj',
+      'readCount': '$readCount',
+      'likeCount': '$likeCount',
+      'comment': '$comment',
+    }    
+    if (openid) {
+      return blog_articles.aggregate([
+        {
+          $match: {'openid': openid},
+          $project: pr,
+        }
+      ])
+      .sort({'_id':-1})
+      .skip(skip)
+      .limit(limit)
+      .exec();
+    } else {
+      return blog_articles.aggregate([
+        {
+          $project: pr,
+        }
+      ])
+      .sort({'_id':-1})
+      .skip(skip)
+      .limit(limit)
+      .exec();
+    }
+  }
+  /**
+   * 更新点赞数量
+   */
+  async updateLikeCount(data) {
+
+  }
+  /**
+   * 更新评论
+   */
+  async updateComment(data){
+
+  }
+  /**
+   * 更新阅读数量
+   */
+  async updateReadCount(data){
+
   }
 }
 module.exports = {
