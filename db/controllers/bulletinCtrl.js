@@ -61,7 +61,7 @@ class Bulletin {
     }
   }
   /**
-   * 更新点赞数量
+   * 更新喜欢数量
    */
   async updateLikeCount(id, data) {
     if (id){

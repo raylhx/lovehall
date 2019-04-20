@@ -21,6 +21,7 @@ class User {
 		if (udata) {
 			return udata;
     } else {
+      // 如果数据库中没有这个用户则创建一个新的用户账号
       return await this.createUser({openid:openid,})
     }
     return false;
@@ -29,7 +30,7 @@ class User {
    * 更新
    */
   async updateUser(data){
-    return user.updateOne({userid: data.userid},data)
+    return user.updateOne({openid: data.openid},data)
   }
 }
 module.exports = {

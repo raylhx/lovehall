@@ -1,11 +1,7 @@
-const querystring = require('querystring');
 const config = require('./config');
 const http = require('http');
 const { User } =require('../db/controllers/userCtrl');
 module.exports = {
-  center: async(ctx,next) =>{
-    ctx.response.body='center'
-  },
   check: async (ctx,next) => {
     ctx.set('Access-Control-Allow-Origin', ctx.request.header.origin);
     ctx.set('Access-Control-Allow-Credentials','true');

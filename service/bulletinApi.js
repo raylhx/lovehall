@@ -61,12 +61,10 @@ module.exports = {
     const params = ctx.request.body
     const data = {
       avatar: params.avatar || '',
-      usrename: params.username || '匿名',
-      id: params.id || '',
     }
     let res = {}
     if (params.id) {
-      const result = await Bulletin.updateLikeCount(params)
+      const result = await Bulletin.updateLikeCount(id,data)
       if (result) {
         res = {
           code: 0,
@@ -98,13 +96,12 @@ module.exports = {
     const params = ctx.request.body
     const data = {
       avatar: params.avatar || '',
-      usrename: params.username || '匿名',
-      openid: params.id || '',
+      usrename: params.username || '',
       content: params.content || '',
     }
     let res = {}
     if (params.id) {
-      const result = await Bulletin.updateComment(params)
+      const result = await Bulletin.updateComment(id,data)
       if (result) {
         res = {
           code: 0,
